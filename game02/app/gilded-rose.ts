@@ -83,6 +83,13 @@ export class GildedRose {
     if (item.sellIn < 0) this.modifyQuality(item, "increase");
   }
 
+  updateConjured(item: Item) {
+    this.modifyQuality(item, "lower");
+    this.modifyQuality(item, "lower");
+
+    if (item.sellIn < 0) this.modifyQuality(item, "increase");
+  }
+
   updateQuality() {
     this.items.forEach((item: Item) => {
       if (!this.isSulfuras(item)) {
@@ -97,8 +104,7 @@ export class GildedRose {
 
           return item;
         } else if (this.isConjured(item)) {
-          this.modifyQuality(item, "lower");
-          this.modifyQuality(item, "lower");
+          this.updateConjured(item);
 
           return item;
         }
